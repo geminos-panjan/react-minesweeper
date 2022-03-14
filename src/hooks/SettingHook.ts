@@ -5,9 +5,9 @@ const defaultRow = 10;
 const defaultColumn = 10;
 const defaultMinePercent = 20;
 
-const minRow = 10;
+const minRow = 1;
 const maxRow = 1000;
-const minColumn = 10;
+const minColumn = 1;
 const maxColumn = 1000;
 const minMinePercent = 1;
 const maxMinePercent = 99;
