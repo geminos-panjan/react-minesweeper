@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --header-height: 40px;
+  --footer-height: 52px;
+}
+
+body {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a:link, a:visited {
+	color: navy;
+}
+
+a:hover {
+	color: purple;
+}
+
+a:active {
+	color: red;
+}
+
+.header {
+  height: var(--header-height);
+  background-color: hsl(210, 50%, 50%);
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: hsl(0, 0%, 100%);
+  margin-left: 1em;
+}
+
+.contents {
+  min-height: calc(100% - var(--header-height) - var(--footer-height));
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.footer {
+  height: var(--footer-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.close-setting-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.close-button::before,
+.close-button::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  top: 10px;
+  background-color: hsl(0, 0%, 50%);
+  border-radius: 100vh;
+  position: absolute;
+}
+
+.close-button::before {
+  transform: rotate(45deg);
+}
+
+.close-button::after {
+  transform: rotate(-45deg);
+}
+
+.close-button:hover::before,
+.close-button:hover::after {
+  background-color: hsl(0, 0%, 75%);
+}
+
+.button {
+  appearance: none;
+  border-radius: 8px;
+  border: 3px solid hsl(0, 0%, 25%);
+  background-color: hsl(0, 0%, 100%);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 4px;
+  min-width: 80px;
+}
+
+.button:hover {
+  background-color: hsl(0, 0%, 90%);
+}
+
+.button:active {
+  background-color: hsl(0, 0%, 80%);
+}

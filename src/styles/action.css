@@ -1,0 +1,25 @@
+.action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  padding: 8px 0;
+  width: 224px;
+  height: 64px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px hsl(0, 0%, 75%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  box-sizing: border-box;
+}
+
+.show-action {
+  opacity: 1;
+  visibility: visible;
+}
+
+.action button {
+  background-color: hsla(0, 0%, 0%, 0.0);
+}

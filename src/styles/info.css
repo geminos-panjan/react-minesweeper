@@ -1,0 +1,16 @@
+.info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.reset-game-button,
+.info-num>div {
+  margin-right: 1em;
+}
+
+.info-num {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}

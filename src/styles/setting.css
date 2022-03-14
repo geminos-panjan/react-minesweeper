@@ -1,0 +1,97 @@
+.open-button {
+  width: 20px;
+  height: 20px;
+  position: sticky;
+  padding: 8px;
+  background-color: hsla(0, 0%, 100%, 0.9);
+  box-shadow: 0 0 4px hsl(0, 0%, 75%);
+  border-radius: 2px;
+  top: 8px;
+  margin: 0 0 -36px calc(100% - 20px - 8px);
+}
+
+.open-button div,
+.open-button div::before,
+.open-button div::after {
+  width: 20px;
+  background-color: hsl(0, 0%, 50%);
+  border-radius: 100vh;
+}
+
+.open-button div {
+  height: 2px;
+  position: relative;
+}
+
+.open-button div::before,
+.open-button div::after {
+  height: 2px;
+  content: "";
+  position: absolute;
+}
+
+.open-button div::before {
+  transform: translate(0, 8px);
+}
+
+.open-button div::after {
+  transform: translate(0, 16px);
+}
+
+.open-button:hover div,
+.open-button:hover div::before,
+.open-button:hover div::after {
+  background-color: hsl(0, 0%, 75%);
+}
+
+.setting {
+  position: sticky;
+  top: calc(50vh - 200px / 2);
+  left: calc(50% - 220px / 2);
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 8px hsl(0, 0%, 75%);
+  width: 220px;
+  height: 200px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  margin-bottom: -200px;
+}
+
+.show-setting {
+  opacity: 1;
+  visibility: visible;
+}
+
+.caption {
+  text-align: center;
+  font-weight: bold;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.label {
+  width: 10ch;
+}
+
+.input input {
+  width: 4em;
+  text-align: right;
+}
+
+.setting-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.setting-buttons button {
+  margin: 8px;
+}

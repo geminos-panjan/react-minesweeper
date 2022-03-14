@@ -1,0 +1,64 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.block-table {
+  border: solid hsl(0, 0%, 50%);
+  border-width: 1px 0 0 1px;
+  display: inline-block;
+  margin: 0 2em;
+  box-shadow: 0 0 4px hsl(0, 0%, 75%);
+}
+
+.block-row {
+  display: flex;
+}
+
+.block {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: solid hsl(0, 0%, 50%);
+  border-width: 0 1px 1px 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: 0.25s;
+}
+
+.block-header {
+  background-color: hsl(0, 0%, 97%);
+}
+
+.block-closing {
+  background-color: hsl(120, 100%, 95%);
+}
+
+.block-selecting {
+  background-color: hsl(300, 100%, 90%);
+  color: hsl(0, 0%, 100%);
+}
+
+.safety {
+  color: hsl(0, 0%, 75%);
+}
+
+.warning {
+  background-color: hsl(60, 100%, 85%);
+}
+
+.serious {
+  background-color: hsl(30, 100%, 85%);
+}
+
+.danger {
+  background-color: hsl(0, 100%, 85%);
+}
+
+.mine {
+  background-color: hsl(0, 0%, 75%);
+  color: hsl(0, 0%, 100%);
+}
