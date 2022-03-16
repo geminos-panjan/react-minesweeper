@@ -45,8 +45,8 @@
 }
 
 .setting {
-  position: sticky;
-  top: calc(50vh - 200px / 2);
+  position: fixed;
+  top: calc(50% - 200px / 2);
   left: calc(50% - 220px / 2);
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 0 8px hsl(0, 0%, 75%);
@@ -59,7 +59,6 @@
   opacity: 0;
   visibility: hidden;
   z-index: 1;
-  margin-bottom: -200px;
 }
 
 .show-setting {
