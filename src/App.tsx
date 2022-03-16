@@ -6,6 +6,8 @@ import useActionState from "./hooks/ActionHook";
 import useSettingState from "./hooks/SettingHook";
 import Info from "./components/Info";
 import Popup from "./components/Popup";
+import Confirm from "./components/Confirm";
+import useConfirmState from "./hooks/ConfirmHook";
 
 const App = () => {
   const [
@@ -25,6 +27,10 @@ const App = () => {
     closeAction, selectBlock, resetGame, checkGame,
   ] = useActionState();
 
+  const [
+    isShowConfirm, callback, closeConfirm, showConfirm, setCallback
+  ] = useConfirmState();
+
   const clickOpenBlockButton = () => {
     if (selecting.isFlagged || selecting.isOpened) {
       return;
@@ -42,31 +48,29 @@ const App = () => {
   };
 
   const clickResetGameButton = () => {
-    if (window.confirm("Reset Game?") === false) {
-      return;
-    }
-    resetTable();
-    resetGame();
+    setCallback(() => () => {});
+    showConfirm();
   };
 
   const clickApplySetting = () => {
-    if (window.confirm("Reset Game?") === false) {
-      return;
-    }
-    applySetting();
-    resetTable();
-    resetGame();
-    closeSetting();
+    setCallback(() => applySetting);
+    showConfirm();
   }
 
   const clickResetSetting = () => {
-    if (window.confirm("Reset Game?") === false) {
-      return;
-    }
-    resetSetting();
+    setCallback(() => resetSetting);
+    showConfirm();
+  }
+
+  const clickConfirmReset = () => {
+    callback();
+    closeConfirm();
     resetTable();
     resetGame();
-    closeSetting();
+  }
+
+  const clickConfirmCancel = () => {
+    closeConfirm();
   }
 
   return (
@@ -94,6 +98,14 @@ const App = () => {
         onClickOpenBlock={clickOpenBlockButton}
         onClickFlagBlock={clickFlagBlockButton}/>
       <Popup text={popupText} isShow={popupIsShow}/>
+      <Confirm
+        question="Reset Game?"
+        yes="Reset"
+        no="Cancel"
+        isShow={isShowConfirm}
+        onClickYes={clickConfirmReset}
+        onClickNo={clickConfirmCancel}
+        />
       <BlockTable blockTable={blockTable}
         selectingID={Number(selecting?.blockID)}
         onClick={selectBlock}/>

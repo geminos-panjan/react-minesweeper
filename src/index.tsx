@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./styles/action.css";
 import "./styles/block.css";
+import "./styles/confirm.css";
 import "./styles/index.css";
 import "./styles/info.css";
 import "./styles/popup.css";

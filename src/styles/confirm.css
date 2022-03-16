@@ -1,0 +1,42 @@
+.confirm {
+  position: fixed;
+  top: calc(50% - 200px / 2);
+  left: calc(50% - 220px / 2);
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 8px hsl(0, 0%, 75%);
+  width: 220px;
+  height: 200px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.show-confirm {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.confirm-buttons button {
+  margin: 8px;
+}
+
+.reset-button {
+  background-color: hsl(0, 100%, 90%);
+  color: hsl(0, 100%, 30%);
+}
