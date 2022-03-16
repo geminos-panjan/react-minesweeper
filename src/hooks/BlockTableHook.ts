@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Block from "../classes/Block";
 import { getMine } from "../util/MineUtil";
+import usePopupState from "./PopupHook";
 
 const useBlockTableStatus: (
   row: number, column: number, minePercent:number
 ) => [
   Block[][],
+  string,
+  boolean,
   (block: Block) => void,
   (block: Block) => void,
   (block: Block) => void,
@@ -39,9 +42,7 @@ const useBlockTableStatus: (
     }
     block.open();
     if (block.hasMine) {
-      setTimeout(() => {
-        alert("BOMB!");
-      }, 1)
+      showPopup("BOMB!");
       return;
     }
     if (block.minesAround < 1) {
@@ -138,27 +139,27 @@ const useBlockTableStatus: (
   }
 
   const checkEnding = (miss: boolean) => {
-    const timeout = 300;
-    if (countMines() <= mine) {
-      setTimeout(() => {
-        if (miss) {
-          alert("END!");
-        } else {
-          alert("CLEAR!");
-        }
-      }, timeout);
+    const message = miss ? "END!" : "CLEAR!";
+    if (isEnding === false && countMines() <= mine) {
+      setIsEnding(true);
+      showPopup(message);
     }
   }
 
   const resetGame = () => {
     setBlockTable(initialTable());
+    setIsEnding(false);
   }
 
   const [blockTable, setBlockTable] = useState<Block[][]>(initialTable());
+  const [isEnding, setIsEnding] = useState(false);
+  const [
+    text, isShow, showPopup
+  ] = usePopupState();
 
   return [
-    blockTable, setMine, openBlock, flagBlock, checkEnding,
-    countFlags, resetGame
+    blockTable, text, isShow, setMine, openBlock, flagBlock, checkEnding,
+    countFlags, resetGame,
   ];
 };
 

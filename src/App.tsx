@@ -5,6 +5,7 @@ import Setting from "./components/Setting";
 import useActionState from "./hooks/ActionHook";
 import useSettingState from "./hooks/SettingHook";
 import Info from "./components/Info";
+import Popup from "./components/Popup";
 
 const App = () => {
   const [
@@ -15,7 +16,7 @@ const App = () => {
   ] = useSettingState();
 
   const [
-    blockTable, setMine, openBlock, flagBlock,
+    blockTable, popupText, popupIsShow, setMine, openBlock, flagBlock,
     checkEnding, countFlags, resetTable,
   ] = useBlockTableStatus(row, column, minePercent);
 
@@ -92,6 +93,7 @@ const App = () => {
         onClickClose={closeAction}
         onClickOpenBlock={clickOpenBlockButton}
         onClickFlagBlock={clickFlagBlockButton}/>
+      <Popup text={popupText} isShow={popupIsShow}/>
       <BlockTable blockTable={blockTable}
         selectingID={Number(selecting?.blockID)}
         onClick={selectBlock}/>
