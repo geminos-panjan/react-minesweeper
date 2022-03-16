@@ -33,7 +33,7 @@ const useSettingState: () => [
   const [isShowSetting, setIsShowSetting] = useState(false);
 
   const openSetting = () => {
-    setIsShowSetting(true);
+    setIsShowSetting(!isShowSetting);
   }
 
   const closeSetting = () => {
