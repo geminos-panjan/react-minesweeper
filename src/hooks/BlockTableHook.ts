@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Block from "../classes/Block";
+import { getStorage } from "../storage/BlockTableStorage";
 import { getMine } from "../util/MineUtil";
 import usePopupState from "./PopupHook";
 
-const useBlockTableStatus: (
-  row: number, column: number, minePercent:number
-) => [
+const useBlockTableStatus: () => [
   Block[][],
   string,
   boolean,
@@ -15,17 +14,21 @@ const useBlockTableStatus: (
   (miss: boolean) => void,
   () => number,
   () => void,
-] = (
-  row: number, column: number, minePercent:number
-) => {
-  const mine = getMine(row, column, minePercent);
+] = () => {
+  const row = useRef(0);
+  const column = useRef(0);
+  const mine = useRef(0);
 
   const initialTable = () => {
+    const s = getStorage();
+    row.current = s.row;
+    column.current = s.column;
+    mine.current = getMine(row.current, column.current, s.minePercent);
     const emptyTable: Block[][] = [];
-    for (let i = 0; i < row; i++) {
+    for (let i = 0; i < row.current; i++) {
       emptyTable.push([]);
-      for (let j = 0; j < column; j++) {
-        emptyTable[i].push(new Block(i * column + j, j, i));
+      for (let j = 0; j < column.current; j++) {
+        emptyTable[i].push(new Block(i * column.current + j, j, i));
       }
     }
     return emptyTable;
@@ -48,12 +51,12 @@ const useBlockTableStatus: (
     if (block.minesAround < 1) {
       for (let dy = -1; dy <= 1; dy++) {
         const y = block.posVertical + dy
-        if (y < 0 || y >= row) {
+        if (y < 0 || y >= row.current) {
           continue;
         }
         for (let dx = -1; dx <= 1; dx++) {
           const x = block.posHorizon + dx;
-          if (x < 0 || x >= column || (dx === 0 && dy === 0)) {
+          if (x < 0 || x >= column.current || (dx === 0 && dy === 0)) {
             continue;
           }
           openBlock(blockTable[y][x]);
@@ -66,10 +69,10 @@ const useBlockTableStatus: (
     const mineList: number[] = [];
     const timeout = 100;
     let j = 0;
-    for (let i = 0; i < mine; i++) {
-      const x = Math.floor(Math.random() * column)
-      const y = Math.floor(Math.random() * row)
-      const blockID = y * column + x;
+    for (let i = 0; i < mine.current; i++) {
+      const x = Math.floor(Math.random() * column.current)
+      const y = Math.floor(Math.random() * row.current)
+      const blockID = y * column.current + x;
       const diffHorizon = Math.abs(x - block.posHorizon);
       const diffVertical = Math.abs(y - block.posVertical);
       if (
@@ -97,12 +100,12 @@ const useBlockTableStatus: (
   const setMinesAround = (block: Block) => {
     for (let dy = -1; dy <= 1; dy++) {
       const y = block.posVertical + dy
-      if (y < 0 || y >= row) {
+      if (y < 0 || y >= row.current) {
         continue;
       }
       for (let dx = -1; dx <= 1; dx++) {
         const x = block.posHorizon + dx;
-        if (x < 0 || x >= column || (dx === 0 && dy === 0)) {
+        if (x < 0 || x >= column.current || (dx === 0 && dy === 0)) {
           continue;
         }
         const minesAround =
@@ -140,7 +143,7 @@ const useBlockTableStatus: (
 
   const checkEnding = (miss: boolean) => {
     const message = miss ? "END!" : "CLEAR!";
-    if (isEnding === false && countMines() <= mine) {
+    if (isEnding === false && countMines() <= mine.current) {
       setIsEnding(true);
       showPopup(message);
     }

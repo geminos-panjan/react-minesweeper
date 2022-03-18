@@ -20,7 +20,7 @@ const App = () => {
   const [
     blockTable, popupText, popupIsShow, setMine, openBlock, flagBlock,
     checkEnding, countFlags, resetTable,
-  ] = useBlockTableStatus(row, column, minePercent);
+  ] = useBlockTableStatus();
 
   const [
     selecting, click, miss, isShowAction,
