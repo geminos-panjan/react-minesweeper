@@ -7,7 +7,7 @@
   border: solid hsl(0, 0%, 50%);
   border-width: 1px 0 0 1px;
   display: inline-block;
-  margin: 0 2em;
+  margin: 0 16px;
   box-shadow: 0 0 4px hsl(0, 0%, 75%);
 }
 
