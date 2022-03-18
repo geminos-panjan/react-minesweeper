@@ -20,7 +20,7 @@ const BlockTable = ({
   const time = useRef(Date.now());
 
   const isFlex = (blockTable.length > 0)
-    ? window.innerHeight > blockTable[0].length * blockWidth
+    ? window.innerWidth > (blockTable[0].length + 2) * blockWidth
     : true;
 
   const tableWrapperClassNames = classNames({
