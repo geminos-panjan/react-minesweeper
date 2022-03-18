@@ -55,7 +55,7 @@ const Setting = ({
         </div>
         <div className="setting-buttons">
           <button className="button" onClick={onClickApply}>Apply</button>
-          <button className="button" onClick={onClickReset}>Reset</button>
+          <button className="button" onClick={onClickReset}>Default</button>
         </div>
       </div>
     </>
