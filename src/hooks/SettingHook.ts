@@ -5,11 +5,11 @@ const defaultRow = 10;
 const defaultColumn = 10;
 const defaultMinePercent = 20;
 
-const minRow = 1;
+const minRow = 0;
 const maxRow = 1000;
-const minColumn = 1;
+const minColumn = 0;
 const maxColumn = 1000;
-const minMinePercent = 1;
+const minMinePercent = 0;
 const maxMinePercent = 99;
 
 const useSettingState: () => [
@@ -37,6 +37,10 @@ const useSettingState: () => [
   }
 
   const closeSetting = () => {
+    const s = getStorage();
+    setRow(s.row);
+    setColumn(s.column);
+    setMinePercent(s.minePercent);
     setIsShowSetting(false);
   }
 
