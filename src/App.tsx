@@ -91,8 +91,6 @@ const App = () => {
         onClickReset={clickResetGameButton}/>
       <Action
         block={selecting}
-        row={row}
-        column={column}
         isShow={isShowAction}
         onClickClose={closeAction}
         onClickOpenBlock={clickOpenBlockButton}

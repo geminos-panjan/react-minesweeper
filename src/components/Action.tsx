@@ -1,11 +1,10 @@
 import classNames from "classnames";
 import { useRef } from "react";
 import Block from "../classes/Block";
+import { getStorage } from "../storage/BlockTableStorage";
 
 type Props = {
   block: Block,
-  row: number,
-  column: number,
   isShow: boolean,
   onClickClose: () => void,
   onClickOpenBlock: () => void,
@@ -14,13 +13,15 @@ type Props = {
 
 const Action = ({
   block,
-  row,
-  column,
   isShow,
   onClickClose,
   onClickOpenBlock,
   onClickFlagBlock,
 }: Props) => {
+  const s = getStorage();
+  const row = s.row;
+  const column = s.column;
+
   const posHorizon = useRef(-1);
   const posVertical = useRef(-1);
 
