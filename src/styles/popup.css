@@ -13,7 +13,7 @@
   box-shadow: 0 0 8px hsl(0, 0%, 75%);
   opacity: 0;
   visibility: hidden;
-  transition: 0.5s;
+  transition: 0.1s;
   box-sizing: border-box;
   font-size: larger;
   font-weight: bold;

@@ -12,18 +12,13 @@ import "./styles/setting.css";
 ReactDOM.render(
   <React.StrictMode>
     <header className="header">
-      <div className="app-title">Minesweeper</div>
+      <div>
+        <div className="app-title">Minesweeper</div>
+      </div>
     </header>
     <div className="contents">
       <App />
     </div>
-    <footer className="footer">
-      &copy;&nbsp;2022&nbsp;
-      <a
-          href="https://github.com/geminos-panjan"
-          target="_blank" rel="noopener noreferrer"
-        >geminos-panjan</a>
-    </footer>
   </React.StrictMode>,
   document.getElementById("root")
 );

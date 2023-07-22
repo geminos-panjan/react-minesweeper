@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap");
 
 html,
 body,
@@ -21,23 +21,30 @@ input {
   font: inherit;
 }
 
-a:link, a:visited {
-	color: navy;
+a:link,
+a:visited {
+  color: navy;
 }
 
 a:hover {
-	color: purple;
+  color: purple;
 }
 
 a:active {
-	color: red;
+  color: red;
 }
 
 .header {
-  height: var(--header-height);
   background-color: hsl(210, 50%, 50%);
+}
+
+.header > div {
+  height: var(--header-height);
   display: flex;
   align-items: center;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .app-title {
@@ -48,9 +55,11 @@ a:active {
 }
 
 .contents {
-  min-height: calc(100% - var(--header-height) - var(--footer-height));
   padding: 1em;
   box-sizing: border-box;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer {

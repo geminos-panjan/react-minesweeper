@@ -55,7 +55,7 @@
   padding: 8px;
   box-sizing: border-box;
   border-radius: 8px;
-  transition: 0.5s;
+  transition: 0.1s;
   opacity: 0;
   visibility: hidden;
   z-index: 1;

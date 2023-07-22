@@ -3,6 +3,11 @@
   justify-content: center;
 }
 
+.block-table-wrapper {
+  overflow: scroll;
+  max-height: calc(100vh - 150px);
+}
+
 .block-table {
   border: solid hsl(0, 0%, 50%);
   border-width: 1px 0 0 1px;
@@ -26,7 +31,7 @@
   align-items: center;
   justify-content: center;
   user-select: none;
-  transition: 0.25s;
+  transition: 0.1s;
 }
 
 .block-header {
